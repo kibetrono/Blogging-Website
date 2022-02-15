@@ -28,3 +28,12 @@ class ProdConfig(Config):
 class TestConfig(Config):
     """"""
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://kibet:KibetFlask@localhost/blog_test'
+
+class DevConfig(Config):
+    """Development configuration child class
+    Args:
+        Config: The parent configuration class with General configuration settings
+    """
+    SQLALCHEMY_DATABASE_URI='postgresql+psycopg2://kibet:KibetFlask@localhost/ownblog'
+
+    DEBUG = True
