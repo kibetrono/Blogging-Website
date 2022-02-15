@@ -1,0 +1,7 @@
+{% extends 'base.html' %} {% import 'bootstrap/wtf.html' as wtf %} {% block
+content %}
+<div class="container register">
+  <h2 class="text-center">NEW PITCH</h2>
+  {{wtf.quick_form(post_form)}}
+</div>
+{% endblock %}

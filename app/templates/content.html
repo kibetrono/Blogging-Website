@@ -1,0 +1,22 @@
+{%extends 'base.html'%}
+{%block content%}
+<!--image-->
+<div class="container-fluid ground" style="background-image: url({{ url_for('static', filename='./images/ground.jpg') }})">
+    <div class="row">
+      <div class="col-md-12">
+
+        <h1><cite>{{quote.quote}}</cite></h1>
+        <p>By: {{quote.author}}</p>
+
+      </div>
+    </div>
+</div>
+<!--/image-->
+
+<!--content-->
+{% for post in all_posts%}
+<div class="container-fluid pitch">
+    {{post.content}}
+</div>
+{%endfor%}
+{%endblock%}

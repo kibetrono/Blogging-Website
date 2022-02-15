@@ -1,0 +1,52 @@
+{%extends 'base.html'%} {%block content%}
+
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+<h1 class="text-center">Post CRUD</h1>
+<br />
+<div class="container-fluid pitch">
+    <div class="row">
+        <div class="col-md-12">
+  {%for post in all_posts%}
+            <div class="display">
+    <div class="card card_main">
+      <div id="show">
+        <div class="card-header">
+                     <img src="{{url_for('static',filename=post.image_path)}}" alt="{{post.title}}" class="post_image">
+
+          <h1 style="color: #131111">{{post.category}}</h1>
+        </div>
+        <div class="card-body">
+          <h2 style="color: #131111">{{post.title}}</h2>
+          <h2 style="color: #131111">{{post.content}}</h2>
+        </div>
+      </div>
+      <hr />
+      <div class="card-footer">
+
+          <div class="row">
+              <div class="col-md-4">
+                   <button class="btn btn-warning btn-lg"><a style="color:white;font-size:20px" href="{{url_for('main.edit',id=post.id)}}">Update</a></button>
+
+              </div>
+              <div class="col-md-4"></div>
+              <div class="col-md-4">
+                   <button class="btn btn-danger btn-lg"><a style="color:white;font-size:20px" href="{{url_for('main.delete',id=post.id)}}">Delete</a></button>
+
+              </div>
+          </div>
+
+
+
+      </div>
+    </div>
+  </div>
+    {%endfor%}
+    </div>
+</div>
+</div>
+
+
+{%endblock%}

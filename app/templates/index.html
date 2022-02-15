@@ -1,0 +1,66 @@
+{%extends 'base.html'%}
+{%block content%}
+<!--image-->
+<div class="container-fluid ground" style="background-image: url({{ url_for('static', filename='./images/ground.jpg') }})">
+    <div class="row">
+        <div class="col-md-3"></div>
+          <div class="col-md-6 pt-4">
+
+        <h1><cite>{{quote.quote}}</cite></h1>
+        <p>By: {{quote.author}}</p>
+
+      </div>
+        <div class="col-md-3"></div>
+
+    </div>
+</div>
+<!--/image-->
+<!--form-->
+<div class="container empty">
+
+</div>
+<!--/form-->
+<!--content-->
+<div class="container-fluid pitch">
+
+  <div class="row">
+    <div class="col-md-10">
+        {% for post in all_posts%}
+<div class="display">
+
+    <div id="show">
+                             <img src="{{url_for('static',filename=post.image_path)}}" alt="{{post.title}}" class="post_image">
+
+        <h1 style="color: #131111">{{post.category}}</h1>
+
+        <h2 style="color: #131111"><a href="{{url_for('main.comment',id = post.id)}}">{{post.title}}</a> </h2>
+        <p style="color: #131111" class="text-primary">posted on :{{post.created_at.strftime('%d %b %Y') }}</p>
+        <h2 style="color: #131111">{{post.content}}</h2>
+
+    </div>
+    <hr />
+
+
+</div>
+        {%endfor%}
+
+    </div>
+    <div class="col-md-2 ">
+        <br>
+        <button class="btn btn-warning btn-lg p-3">
+            <a style="font-size:25px" href="{{url_for('main.subscribe')}}">
+            Subscribe to get mails</a></button>
+<div class="subscribe">
+            <h1>Choose Category</h1>
+            <button class="btn btn-primary btn-lg "><a href="{{ url_for('category.lifestyle')}}"> Lifestyle</a></button><br>
+            <button class="btn btn-primary btn-lg "><a href="{{ url_for('category.fashion')}}"> Fashion</a></button><br>
+            <button class="btn btn-primary btn-lg "><a href="{{ url_for('category.travel')}}"> Travel</a></button><br>
+            <button class="btn btn-primary btn-lg "><a href="{{ url_for('category.health')}}"> Health</a></button><br>
+            <button class="btn btn-primary btn-lg "><a href="{{ url_for('category.promotion')}}"> Promotion</a></button><br>
+            <button class="btn btn-primary btn-lg "><a href="{{ url_for('category.photography')}}"> Photography</a></button><br>
+</div>
+
+    </div>
+  </div>
+</div>
+{%endblock%}

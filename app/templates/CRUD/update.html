@@ -1,0 +1,76 @@
+{%extends 'base.html'%}
+{%block content%}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            {% with messages=get_flashed_messages()%}
+                {%if messages%}
+                    {%for message in messages%}
+            <div class="alert alert-success alert-dismissible" role="alert">
+
+                {{message}}
+ <button type="button" class="btn close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+
+
+            </div>
+
+                    {%endfor%}
+                {%endif%}
+            {%endwith%}
+        </div>
+
+        <div class="col-md-4"></div>
+    </div>
+
+ 
+    <form action="{{url_for('main.edit',id=data.id)}}" method="POST" enctype="multipart/form-data">
+      <h1 class="text-info text-center">Update Pizza</h1>
+
+      <div class="form-group mb-2">
+        <label >Post Title</label>
+          <input type="text" name="title"  class="form-control" value='{{data.title}}' placeholder="Post Title" required>
+      </div>
+
+
+
+
+      <div class="form-group mb-2">
+        <label >Post Category</label>
+
+     <select class="form-control" name="category" value='{{data.category}}' id="size">
+         <option value="">Select post category</option>
+         <option value="lifestyle" {%  if data.category =="lifestyle" %}selected {%endif%}>Lifestyle</option>
+         <option value="fashion" {%  if data.category =="fashion" %}selected {%endif%} > Fashion</option>
+         <option value="food" {%  if data.category =="food" %}selected {%endif%} >Food</option>
+         <option value="promotion" {%  if data.category =="promotion" %}selected {%endif%} >Promotion</option>
+         <option value="photography" {%  if data.category =="photography" %}selected {%endif%} >Photography</option>
+         <option value="travel" {%  if data.category =="travel" %}selected {%endif%} >Travel</option>
+         <option value="health" {%  if data.category =="health" %}selected {%endif%} >Health</option>
+     </select>
+  </div>
+
+  <div class="form-group mb-2">
+    <label for="">Post Content</label><br>
+  <textarea name="content"  class="form-control" >{{data.content}}</textarea>
+  </div>
+
+
+
+
+
+  <div class="form-group mb-2 mt-4">
+   
+        <input type="submit" class="btn btn-primary btn-lg" name="updatepizza" value="Updata Pizza" required>
+
+    </div>
+
+
+  </form>
+
+
+
+</div>
+{%endblock%}

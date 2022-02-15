@@ -1,0 +1,51 @@
+{%extends 'base.html'%}
+{%block content%}
+<!--image-->
+<div class="container-fluid ground" style="background-image: url({{ url_for('static', filename='./images/ground.jpg') }})">
+    <div class="row">
+        <div class="col-md-3"></div>
+          <div class="col-md-6 pt-4">
+
+        <h1><cite>{{quote.quote}}</cite></h1>
+        <p>By: {{quote.author}}</p>
+
+      </div>
+        <div class="col-md-3"></div>
+
+    </div>
+</div>
+<!--/image-->
+<!--form-->
+
+<!--/form-->
+          <h1 style="color:white" class="text-info text-center text-white ">Health Posts</h1>
+
+<!--content-->
+<div class="container-fluid pitch">
+    <br>
+  <div class="row">
+    <div class="col-md-12">
+        {% for post in all_posts%}
+<div class="display">
+
+    <div id="show">
+                             <img src="{{url_for('static',filename=post.image_path)}}" alt="{{post.title}}" class="post_image">
+
+        <h1 style="color: #131111">{{post.category}}</h1>
+
+        <h2 style="color: #131111"><a href="{{url_for('main.comment',id = post.id)}}">{{post.title}}</a> </h2>
+        <p style="color: #131111" class="text-primary">posted on :{{post.created_at.strftime('%d %b %Y') }}</p>
+        <h2 style="color: #131111">{{post.content}}</h2>
+
+    </div>
+    <hr />
+
+
+</div>
+        {%endfor%}
+
+    </div>
+
+  </div>
+</div>
+{%endblock%}
