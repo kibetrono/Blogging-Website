@@ -13,6 +13,7 @@ class Config:
     MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
     UPLOADED_PHOTOS_DEST = 'app/static/photos'
 
+
 class ProdConfig(Config):
     """Production configuration child class
     Args:
@@ -25,9 +26,11 @@ class ProdConfig(Config):
         SQLALCHEMY_DATABASE_URI = SQLALCHEMY_DATABASE_URI.replace("postgres://", "postgresql://", 1)
     # rest of connection code using the connection string `uri`
 
+
 class TestConfig(Config):
     """"""
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://kibet:KibetFlask@localhost/blog_test'
+
 
 class DevConfig(Config):
     """Development configuration child class
@@ -37,3 +40,12 @@ class DevConfig(Config):
     SQLALCHEMY_DATABASE_URI='postgresql+psycopg2://kibet:KibetFlask@localhost/ownblog'
 
     DEBUG = True
+
+
+config_options = {
+
+    'development': DevConfig,
+    'production': ProdConfig,
+    'test':TestConfig
+
+}
