@@ -37,7 +37,6 @@ class DevConfig(Config):
     Args:
         Config: The parent configuration class with General configuration settings
     """
-    SQLALCHEMY_DATABASE_URI='postgresql+psycopg2://kibet:KibetFlask@localhost/ownblog'
 
     DEBUG = True
 
