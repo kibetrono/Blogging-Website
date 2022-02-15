@@ -39,7 +39,7 @@ Kibrono Flask Blog allows users to view various top posts,give comments on them 
 
 ## Live Link
 
-* [Click Here]( ) to view KibRono Blog
+* [Click Here](https://kibronoblog.herokuapp.com/) to view KibRono Blog
 
 ## Some Screenshots
 
